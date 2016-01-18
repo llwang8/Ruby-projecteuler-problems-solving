@@ -6,34 +6,113 @@
 #end
 
 # Problem 1: Multiples of 3 and 5
-sum = 0
-(1..999).each do |i|
-	if (i % 3 == 0) || (i % 5 == 0) 
-		sum += i
+def multiple_of_3_and_5
+	sum = 0
+	(1..999).each do |i|
+		if (i % 3 == 0) || (i % 5 == 0) 
+			sum += i
+		end
 	end
+	sum
 end
-puts sum
+# multiple_of_3_and_5()
 # Answer:233168
 
-# Problem 2:
+
+# Problem 2: Even Fibonacci numbers
+def even_fibonacci_sum
+	arr = [1,2]
+	sum = 2
+	i = 2
+	while i < 4000000000 do
+		arr[i] = arr[i-1] + arr[i-2]
+		arr << arr[i]
+		sum += arr[i] if arr[i].even?
+		i += 1
+		#puts "#{[i]} - #{arr[i]}"
+	end 
+	sum
+end
+# even_fibonacci_sum()
+# Answer: 
+
+
+# Problem 3: Largest prime factor
+def check_if_prime (n)
+	result = true
+	(2..n-1).each do |i|
+		return result = false if n % i == 0
+	end
+	result
+end
+
+def largestPrimeFactor
+	arr = []
+	(2..600851475143).each do |i|
+		arr << i if (13195 % i == 0) && check_if_prime(i) #check to see if i is a factor and prime
+	end
+	arr[-1]
+end
+#check_if_prime(7)
+#largestPrimeFactor()
+# Answer: 
+
+
+# Problem 4: Largest palindrome product
+def check_if_palindrome_num(n)
+	(n.to_s  ==  n.to_s.reverse )? true : false
+end
+def largest_palindrome_from_product_of_numbers 
+	arr = []
+	(10..99).each do |i|
+		(10..99).each do |j|
+			next if i == j
+			arr << i * j if check_if_palindrome_num(i * j)
+		end
+	end
+	arr.sort!
+	arr[-1]
+end
+#largest_palindrome_from_product_of_numbers()
+# Answer: 
+
+
+# Problem 5: Smallest multiple
 
 
 
+
 # Answer: 
-# Problem 3:
+
+
+# Problem 6: Sum square difference
+def diff_between_sumofsquares_and_squareofsum (k)
+	sum_of_squared = 0
+	square_of_sum = 0
+	(1..10).each do |i|
+		sum_of_squared += i * i
+		square_of_sum += i
+	end
+	(sum_of_squared - square_of_sum ** 2).abs
+end
+diff_between_sumofsquares_and_squareofsum(10)
+
 # Answer: 
-# Problem 4:
-# Answer: 
-# Problem 5:
-# Answer: 
-# Problem 6:
-# Answer: 
+
+
 # Problem 7:
+
 # Answer: 
+
+
 # Problem 8:
 # Answer: 
+
+
 # Problem 9:
 # Answer: 
+
+
 # Problem 10:
 # Answer: 
 # Problem 11:
